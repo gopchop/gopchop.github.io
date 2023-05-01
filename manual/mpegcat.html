@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>mpegcat</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><H1
+><A
+NAME="AEN1"
+></A
+>mpegcat</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN15"
+></A
+><H2
+>Name</H2
+>mpegcat&nbsp;--&nbsp;      Extracts structural information and PES streams from an MPEG2 video file
+    </DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN18"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>mpegcat</B
+>  {<TT
+CLASS="REPLACEABLE"
+><I
+>options</I
+></TT
+>} {<TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+>}</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN27"
+></A
+><H2
+>DESCRIPTION</H2
+><P
+>     <B
+CLASS="COMMAND"
+>mpegcat</B
+> dumps detailed textual information about
+     an MPEG2 file. It also has an option for writing out a particular
+     Packetized Elementary Stream (PES) given its id.
+     </P
+><P
+>     The original purpose of <B
+CLASS="COMMAND"
+>mpegcat</B
+> was for debugging stream parsing issues
+     in the gopchop cuts-only MPEG2 video editor, but it has more general utility.
+     </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN33"
+></A
+><H2
+>OPTIONS</H2
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN35"
+></A
+><H3
+>General Options</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-d</CODE
+>,<CODE
+CLASS="OPTION"
+>--debug</CODE
+></DT
+><DD
+><P
+>	            Report debug info
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-D</CODE
+>,<CODE
+CLASS="OPTION"
+>--dvd-format</CODE
+></DT
+><DD
+><P
+>	            Enable DVD packet extensions
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-h</CODE
+>,<CODE
+CLASS="OPTION"
+>-?</CODE
+>,<CODE
+CLASS="OPTION"
+>--help</CODE
+></DT
+><DD
+><P
+>	            Help
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-w</CODE
+>,<CODE
+CLASS="OPTION"
+>--write <TT
+CLASS="REPLACEABLE"
+><I
+>FILE</I
+></TT
+>,<TT
+CLASS="REPLACEABLE"
+><I
+>0xID</I
+></TT
+>[,<TT
+CLASS="REPLACEABLE"
+><I
+>0xSID</I
+></TT
+>]</CODE
+></DT
+><DD
+><P
+>	            Write <TT
+CLASS="REPLACEABLE"
+><I
+>PES</I
+></TT
+> with id <TT
+CLASS="REPLACEABLE"
+><I
+>ID</I
+></TT
+>
+              (and subid <TT
+CLASS="REPLACEABLE"
+><I
+>SID</I
+></TT
+>) to <TT
+CLASS="REPLACEABLE"
+><I
+>FILE</I
+></TT
+>.
+              Sub Picture Unit (SPU) streams such
+              as overlays, subtitles and DVD menus extracted using this option
+              can be displayed using the companion
+              <B
+CLASS="COMMAND"
+>gtkspu</B
+> utility.
+	          </P
+><P
+>              To find SPU streams in a .VOB ripped from a DVD:
+            </P
+><PRE
+CLASS="SCREEN"
+>                <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>mpegcat</B
+> -iDa VTS_01_0.VOB | grep SPU</KBD
+>
+                   131086: 0xBD:  DVD Audio 0x20 (SPU 0): 2028 bytes (next marker @ 133120)
+                   133134: 0xBD:  DVD Audio 0x20 (SPU 0): 2028 bytes (next marker @ 135168)
+                   137230: 0xBD:  DVD Audio 0x20 (SPU 0): 190 bytes (next marker @ 137426)
+                   ...
+            </PRE
+><P
+>              To save a given stream:
+            </P
+><PRE
+CLASS="SCREEN"
+>                <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>mpegcat</B
+> -iDaw dump.spu,0xBD,0x20 VTS_01_0.VOB &#62; /dev/null</KBD
+>
+            </PRE
+><P
+>              (And to view the stream)
+            </P
+><PRE
+CLASS="SCREEN"
+>                <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 1</KBD
+>
+                <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 2</KBD
+>
+                <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 3</KBD
+>
+                ...
+            </PRE
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN92"
+></A
+><H3
+>Processing Toggles</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-V</CODE
+>,<CODE
+CLASS="OPTION"
+>--enter-video</CODE
+></DT
+><DD
+><P
+>	            Process video packets (forced by -t option)
+	          </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN101"
+></A
+><H3
+>General Display Toggles</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-p</CODE
+>,<CODE
+CLASS="OPTION"
+>--pack</CODE
+></DT
+><DD
+><P
+>	            Toggle Pack packet start display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-v</CODE
+>,<CODE
+CLASS="OPTION"
+>--video</CODE
+></DT
+><DD
+><P
+>	            Toggle video ES packet start display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-a</CODE
+>,<CODE
+CLASS="OPTION"
+>--audio</CODE
+></DT
+><DD
+><P
+>	            Toggle audio ES packet start display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-o</CODE
+>,<CODE
+CLASS="OPTION"
+>--other</CODE
+></DT
+><DD
+><P
+>	            Toggle other stream display (only show video &#38; audio)
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-y</CODE
+>,<CODE
+CLASS="OPTION"
+>--system</CODE
+></DT
+><DD
+><P
+>	            Toggle system header display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-e</CODE
+>,<CODE
+CLASS="OPTION"
+>--errors</CODE
+></DT
+><DD
+><P
+>	            Toggle packet errors
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-i</CODE
+>,<CODE
+CLASS="OPTION"
+>--invert</CODE
+></DT
+><DD
+><P
+>	            Invert all display toggles
+	          </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN146"
+></A
+><H3
+>Video Display Toggles</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-s</CODE
+>,<CODE
+CLASS="OPTION"
+>--slices</CODE
+></DT
+><DD
+><P
+>	            Toggle slice starts (default off)
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-q</CODE
+>,<CODE
+CLASS="OPTION"
+>--sequence</CODE
+></DT
+><DD
+><P
+>	            Toggle sequence header display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-g</CODE
+>,<CODE
+CLASS="OPTION"
+>--GOPs</CODE
+></DT
+><DD
+><P
+>	            Toggle GOP header display
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-f</CODE
+>,<CODE
+CLASS="OPTION"
+>--frames</CODE
+></DT
+><DD
+><P
+>	            Toggle Picture header display
+	          </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN173"
+></A
+><H3
+>Short Cuts</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-F</CODE
+>,<CODE
+CLASS="OPTION"
+>--just-frames</CODE
+></DT
+><DD
+><P
+>	            Show only video frames (same as '-Vepvaoyq')
+	          </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN182"
+></A
+><H3
+>File Offset Options</H3
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><CODE
+CLASS="OPTION"
+>-b</CODE
+>,<CODE
+CLASS="OPTION"
+>--begin=<TT
+CLASS="REPLACEABLE"
+><I
+>NUM</I
+></TT
+></CODE
+></DT
+><DD
+><P
+>	            Start reading at offset <TT
+CLASS="REPLACEABLE"
+><I
+>NUM</I
+></TT
+>  
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-n</CODE
+>,<CODE
+CLASS="OPTION"
+>--num=<TT
+CLASS="REPLACEABLE"
+><I
+>NUM</I
+></TT
+></CODE
+></DT
+><DD
+><P
+>	            Stop after reading <TT
+CLASS="REPLACEABLE"
+><I
+>NUM</I
+></TT
+> bytes
+	          </P
+></DD
+><DT
+><CODE
+CLASS="OPTION"
+>-t</CODE
+>,<CODE
+CLASS="OPTION"
+>--scan-stream</CODE
+></DT
+><DD
+><P
+>Scan every byte of the stream instead of using PES offsets
+            (this can show erroneous 'start code emulation' codes)</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN207"
+></A
+><H2
+>AUTHOR</H2
+><P
+>Kees Cook, <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:kees@outflux.net"
+>kees@outflux.net</A
+>&#62;</CODE
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN215"
+></A
+><H2
+>SEE ALSO</H2
+><P
+>gopchop(1), gtkspu(1)</P
+></DIV
+></BODY
+></HTML
+>

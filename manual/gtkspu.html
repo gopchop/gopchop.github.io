@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>gtkspu</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><H1
+><A
+NAME="AEN1"
+></A
+>gtkspu</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN15"
+></A
+><H2
+>Name</H2
+>gtkspu&nbsp;--&nbsp;      Decodes and displays MPEG2 Sub Picture Unit (SPU) streams
+    </DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN18"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>gtkspu</B
+>  {<TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+>} [<TT
+CLASS="REPLACEABLE"
+><I
+>which</I
+></TT
+>]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN27"
+></A
+><H2
+>DESCRIPTION</H2
+><P
+>     <B
+CLASS="COMMAND"
+>gtkspu</B
+> decodes and displays MPEG2
+     Sub Picture Unit (SPU) streams. SPU streams normally occur in DVD
+     .VOB files. Examples of SPUs are overlays, subtitles, and DVD
+     menus.
+     </P
+><P
+>     Most likely you will use the <B
+CLASS="COMMAND"
+>mpegcat</B
+> utility
+     to extract the SPU streams. Instructions for extraction of SPU
+     streams can be found in the man page for <B
+CLASS="COMMAND"
+>mpegcat</B
+>.
+     </P
+><P
+>     Given an SPU file "dump.spu" extracted with <B
+CLASS="COMMAND"
+>mpegcat</B
+>, you can run <B
+CLASS="COMMAND"
+>gtkspu</B
+>
+     multiple times to view its contents:
+     <PRE
+CLASS="SCREEN"
+>        <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 0</KBD
+>
+        <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 1</KBD
+>
+        <SAMP
+CLASS="PROMPT"
+>$ </SAMP
+><KBD
+CLASS="USERINPUT"
+><B
+CLASS="COMMAND"
+>gtkspu</B
+> dump.spu 2</KBD
+>
+        ...
+     </PRE
+>
+  </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN47"
+></A
+><H2
+>AUTHOR</H2
+><P
+>Kees Cook, <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:kees@outflux.net"
+>kees@outflux.net</A
+>&#62;</CODE
+></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN55"
+></A
+><H2
+>SEE ALSO</H2
+><P
+>mpegcat(1), gopchop(1)</P
+></DIV
+></BODY
+></HTML
+>

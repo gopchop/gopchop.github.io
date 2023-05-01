@@ -1,0 +1,236 @@
+---
+layout: default
+title: Frequently Asked Questions
+---
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Q:  What is GOPchop?</h3>
+<p>
+    GOPchop is a "Graphical MPEG Clipper" - a Linux-based GUI program
+    for removing sections from a video file with the minimum amount of
+    disturbance to the stream.  It does this by writing specific "Group
+    of Pictures" (GOP) sections to a new video file.  The GOPs will
+    decode correctly and the gaps won't be noticed.
+</p>
+<p>
+    It's principle use is to allow hardware encoder stream users to cut
+    out commercials, etc. from recordings they make with their
+    equipment.
+</p>
+<p>
+    There do not appear to be any other graphical MPEG clippers
+    available for Linux, so GOPchop appears to be unique in its class.
+    There are some comparable programs for Windows, and some
+    non-graphical tools for Linux.
+</p>
+
+<h3>Q:  How did GOPchop start?</h3>
+<p>
+    This project began from a personal itch of Kees Cook to edit MPEG2
+    files produced by his KFir MPEG2 capture card.  His goal was to
+    extract music videos he liked, for future archiving.  The tool
+    seemed to fit what others needed, and with a patch here and a patch
+    there, it grew to what it is today.  
+</p>
+
+<h3>Q:  What are GOPchop's Development Goals?</h3>
+<p>
+    As GOPchop continues to be used for editing of MPEG2 hardware encoder
+    streams, it's expected that support will be needed for subtle changes
+    in the streams produced by newer encoders.  Achieving this will of
+    course depend largely on community involvement and work by users of
+    different pieces of hardware.  Thus, a principle development goal
+    for the GOPchop project is to review and integrate patches to
+    improve the video format support.
+</p>
+<p>
+    In addition, as the Open Source community at large achieves progress
+    with video capture and playback, it will need good editing tools.
+    GOPchop seeks to fill a role in this ecosystem.  We wish to adopt
+    features which make the tool more convenient for common usage, and
+    that enable it to interface and/or interoperate better with other
+    Open Source tools.
+</p>
+<p>
+    Perhaps even more important than it's goals are its non-goals.
+    GOPchop should strive to do one specific task, and do it as best as
+    possible.  Other functionality should be implemented by other tools
+    that can be used easily in conjunction with GOPchop for video
+    processing. 
+</p>
+
+<h3>Q:  What does 'GOPchop' mean?</h3>
+<p>
+    "GOP" means "Group of Pictures".  This tool allows chopping out
+    sections (such as commercials) from a video stream, up to one GOP
+    worth of video.  This lets you edit an MPEG2 without have to
+    re-encode (or remultiplex) the stream.  This is a much faster way
+    to edit, if you don't need frame-by-frame granularity.
+</p>
+
+<h3>Q:  What's the difference between GOPchop and GOPDIT?</h3>
+<p>
+    <a href="http://hoohol.homepage.t-online.de/gopdit/">GOPDIT</a> was
+	inspired by GOPchop, and does basically the same job.  You'll have to
+    try them both out and see which produces a better result for you.  From
+    initial inspection, it sounds like GOPDIT loads faster, but GOPchop 
+    handles transitions better.  GOPchop also has more tweaks for specific
+    editing needs.  See the preferences dialog for more details.
+</p>
+
+<h3>Q:  What's the difference between GOPchop and avidemux?</h3>
+<p>
+    <a href="http://fixounet.free.fr/avidemux/">avidemux</a> is primarily
+	a demux/remux application.  If you need single-frame granularity,
+	you want to use avidemux.  However, your stream may need to be
+    re-rendered up to a point.  Remuxing changes the characteristics of
+	the resulting MPEG stream, and is not always prefered.  GOPchop
+	cuts on GOP boundries, and doesn't remux the stream; the stream just
+	has chunks removed from it.
+</p>
+
+<h3>Q:  What's the difference between GOPchop and Playitsam?</h3>
+<p>
+    <a href="http://minnie.tuhs.org/Programs/Playitsam/">Playitsam</a>
+    is another open source MPEG stream editor, billed only as 
+    a proof-of-concept.  It was written specifically for Tivo editing,
+    so may not work as well for other kinds of streams, but since it can
+    receive directly from the Tivo unit (which GOPchop cannot), it might
+    be more convenient for that.  It includes both commandline and GUI
+    interfaces, and while the GUI interface doesn't look as good as
+    GOPchop, the commandline interface appears to be more flexible than
+    GOPchop.
+</p>
+<p>
+    Unfortunately, there does not appear to have been any new releases
+    to Playitsam since its 2.00 release in January 2003.
+</p>
+
+<h3>Q:  What's the difference between GOPchop and mpgtx?</h3>
+<p>
+    <a href="http://mpgtx.sourceforge.net/">mpgtx</a> is a commandline
+    MPEG audio/video toolbox.  It's useful for splitting and joining
+    video streams, and providing detailed info about the stream.
+</p>
+<p>
+    mpgtx is updated periodically (last update at time of this writing
+    was Jan 2005), and may be a good choice if you are interested in
+    non-graphical MPEG clipping.
+</p>
+
+
+<h3>Q:  Can GOPchop be used from the commandline?</h3>
+<p>
+    Not for editing (yet).  For details refer to the manual page via 
+    <code>man gopchop</code> after you've installed it.  There is a 
+    patch that was submitted to the mailing list that gets the basic
+    process done, but it hasn't been put into the mainline source yet.
+</p>
+
+<h3>Q:  How can I help?</h3>
+<p>
+    Grab the code and start hacking on whatever draws your attention.
+    Send in a patch when you're happy with it and ready share your efforts
+    with others.  Translators are also quite welcome.
+</p>
+<p>
+    It is important that each patch fit well with the existing codebase,
+    so each patch is reviewed before integration; this may take some
+    time so if you don't hear back right away, don't worry, it probably
+    just needs some time to digest it.
+</p>
+<p>
+    Other ways to help include helping to get GOPchop integrated into
+    more Linux distros, testing it in new environments, and spreading
+    word about it to others in the community.  We also need to collect
+    more (copyright-free) example streams to test against.
+</p>
+<p>
+    As well, you can help GOPchop a lot by working on tools and
+    utilities that can be used with it, or by testing interoperability
+    of the output from GOPchop with other tools and players.
+</p>
+
+<h3>Q:  What's a good way to get familiar with the code?</h3>
+<p>
+    Many users find it easiest to approach GOPchop development by adding
+    better support for their specific need.  Reading the C++ APIs for the
+    MPEG2Parser class is a good place to start if you're a video format
+    junkie.  For those of you interested in user interface changes, you
+    may want to review the <a
+    href="http://developer.gnome.org/doc/API/">GTK API</a>, and the
+    <a href="http://glade.gnome.org/">Glade</a> UI designer.
+</p>
+
+<h3>Q:  What is the Linux command to download the code through CVS?</h3>
+<p>
+    Directions are under the <a href="http://sourceforge.net/cvs/?group_id=40120">CVS</a> link on the 
+    <a href="http://www.sourceforge.net/projects/gopchop/">GOPchop
+        sourceforge page</a>.
+</p>
+
+<pre>
+    cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gopchop login
+
+    cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gopchop co gopchop
+</pre>
+
+<p>
+    where you'd replace 'modulename' with 'gopchop'.
+</p>
+
+<h3>Q:  GOPchop mangled my MPEG file!  Why?</h3>
+<p>
+    Please note that GOPchop uses a very simple MPEG2-PS parser, designed
+    for use with very regular streams and wasn't really
+    intended to be a general purpose MPEG editor.  Fortunately, many
+    kind users have submitted patches to expand its MPEG handling
+    capabilities.  Still, most of the streams made by software
+    multiplexors don't produce video packets in the same way GOPchop
+    expects them, and as a result GOPchop really wrecks the results.
+</p>
+<p>
+    Thus, if you find the output from GOPchop is coming out corrupted,
+    doublecheck the format of your MPEG stream, and look at other
+    converter programs that may help get it into a GOPchop-compatible
+    MPEG2-PS form.
+</p>
+<p>
+    As a longer term solution, it's intended that GOPchop will adopt the
+    <a href="http://freshmeat.net/projects/mpegparse/">libmpegparse</a>
+    library.  Once that's in place, GOPchop will have the demux/analysis
+    strength needed to properly handle the (not so) corner cases of
+    video packet location in the streams.  Until then, GOPchop really
+    only is useful for a subset of streams.
+</p>
+
+<h3>Q:  Why does GOPchop mangle TiVO series 1 streams?</h3>
+<p>
+    Tivo series 1 streams are more like transport streams than program
+    streams, and GOPchop isn't able to handle them.  Tivo series 2
+    stores streams as program streams and thus work properly with
+    GOPchop.
+</p>
+
+<h3>Q:  What hardware encoders is GOPchop known to work well with?</h3>
+<p>
+	There have been reports of GOPchop success with KFir, Hauppauge PVR 250/350,
+	TiVo Series 2, and several others.  If you've got GOPchop working well
+	with an encoder not listed here, please let us know!
+</p>
+
+<h3>Q:  Does GOPchop support MPEG1 streams?</h3>
+<p>
+    Yes, however, some MPEG1 streams do not contain "Sequence Headers" with
+    each GOP, so your output stream will need to include the first GOP of
+    the input stream.  Hopefully someone can work on improving this
+    deficiency.
+</p>
+
+<h3>Q:  How can I use GOPchop on a remote X11 display?</h3>
+<p>
+    Make sure your preferences are set to use the "x11" display driver,
+    or specify it on the command line when you first start GOPchop:
+    "-v x11".
+</p>

@@ -1,0 +1,85 @@
+---
+layout: default
+title: Reporting Bugs
+---
+
+<h2>Reporting Bugs</h2>
+
+<p>
+Please report any bugs you find in GOPchop at the
+<a
+href="http://sourceforge.net/tracker/?group_id=40120&atid=427109">SourceForge
+Bug Tracker for GOPchop</a>.  If you wish, you may also join the 
+<a
+href="http://lists.sourceforge.net/mailman/listinfo/gopchop-devel">GOPchop
+Developer List</a> to discuss the problem more directly.
+</p>
+
+<p>
+Your bug reports are vital for making GOPchop a robust and capable
+application.  It is an important goal that each GOPchop release be
+stable, crash-free, and behave itself well.  Bug reports from users are
+the primary means of quality assurance, as we rely on the Open Source
+principle of "Many Eyes Make Bugs Shallow".
+</p>
+
+<p>
+If the bug you report to the bug tracker is not fixed promptly, this
+may mean developers cannot reproduce it, or cannot understand your
+description, or are simply too busy with other things. Be persistent. As
+the original reporter, you are the person most interested in fixing it,
+so if your first report had no effect, you must not let it drop. There
+are many things you can do to help push your bug closer to a fix:
+</p>
+
+<ol>
+<li>Submit the bug to the tracker. Don't wait for someone else to do
+   it. It's important, otherwise your report will be quickly
+   forgotten. (But check the tracker first, your bug may be already
+   there.)
+</li>
+
+<li>
+Submit complete information: version, platform, locale, steps to
+reproduce, and sample file(s) and screenshots if appropriate.
+</li>
+
+<li>
+If this is a crash, it's important to submit a backtrace. Use gdb to
+get a backtrace as follows:
+
+<pre>
+ gdb <path to gopchop executable>
+
+ (gdb) run [<i>parameters (optional)</i>]
+
+ # Carry out the actions to make the program crash
+
+ (gdb) bt
+</pre>
+
+and send us the output. All of this can be done on Windows too, the
+Windows binary of gdb is available from
+<a href="http://www.mingw.org/download.shtml">http://www.mingw.org/download.shtml</a>.
+</li>
+
+<li>If you really want the bug to be fixed, try to find out the exact
+   point in time when the bug appeared. At the very least, test old
+   GOPchop versions. To get a narrower and more useful estimate, use
+   backdated CVS checkouts (the -D switch) to find the most recent date
+   on which the CVS was is OK, and also the first date on which it is
+   broken. Then we can make a diff between these two dates to figure out
+   the reason. If you manage to find the day of breakage and if that
+   day's diff is big (which is possible, given the rate of checkins
+   we're having on average), try to narrow it down to a few hours. For
+   example:
+
+<pre>
+  cvs -d:ext:<i>your_sf_login</i>@cvs.sf.net:/cvsroot/gopchop checkout -D"2004-04-04 12:00" gopchop
+</pre>
+
+will give you the CVS as it was on that date at midday. I think this
+should work with anonymous CVS access too.
+<br /><br />
+</li>
+</ol>
